@@ -30,6 +30,7 @@
 		C30509C8252A36FD00803F94 /* WorkSans-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C30509B2252A36FD00803F94 /* WorkSans-Italic-VariableFont_wght.ttf */; };
 		C30509C9252A36FD00803F94 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30509B3252A36FD00803F94 /* OFL.txt */; };
 		C30509CA252A36FD00803F94 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C30509B4252A36FD00803F94 /* README.txt */; };
+		C30509CC252A4CC200803F94 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30509CB252A4CC200803F94 /* CourseList.swift */; };
 		C343D3B1252650EE00AA4A17 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343D3B0252650ED00AA4A17 /* MenuView.swift */; };
 		C3494F8B2527790F00E57721 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3494F8A2527790F00E57721 /* Home.swift */; };
 		C3494F8D252787FA00E57721 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3494F8C252787FA00E57721 /* HomeView.swift */; };
@@ -70,6 +71,7 @@
 		C30509B2252A36FD00803F94 /* WorkSans-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		C30509B3252A36FD00803F94 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		C30509B4252A36FD00803F94 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		C30509CB252A4CC200803F94 /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
 		C343D3B0252650ED00AA4A17 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C3494F8A2527790F00E57721 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		C3494F8C252787FA00E57721 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				C3655CBC252A1630002FDA9B /* RingView.swift */,
 				C305099B252A310100803F94 /* Modifiers.swift */,
 				C3494F8A2527790F00E57721 /* Home.swift */,
+				C30509CB252A4CC200803F94 /* CourseList.swift */,
 				C3494F8E2527A1DA00E57721 /* UpdateList.swift */,
 				C3494F902527AAB700E57721 /* UpdateDetail.swift */,
 				C350ACE22528CCAA00C603CD /* UpdateStore.swift */,
@@ -289,6 +292,7 @@
 				C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */,
 				C38B2B912524F7DC00A8C30D /* ContentView.swift in Sources */,
 				C350ACE52528DB6200C603CD /* TabBar.swift in Sources */,
+				C30509CC252A4CC200803F94 /* CourseList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
