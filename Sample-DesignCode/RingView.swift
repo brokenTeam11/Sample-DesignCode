@@ -11,10 +11,12 @@ import SwiftUI
 struct RingView: View {
     var color1 = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
     var color2 = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-    var width: CGFloat = 88
-    var height: CGFloat = 88
+    var width: CGFloat = 44
+    var height: CGFloat = 44
     // 设置百分比，给个默认值
-    var percent: CGFloat = 44
+    var percent: CGFloat = 88
+    // 为了让外部能引用这个组件的值，把@State改成@Binding
+    @Binding var show: Bool
     
     
     
@@ -35,7 +37,7 @@ struct RingView: View {
             // 活动循环
             Circle()
                 // 添加进度条 `0.2代表80%, 0.1代表90%`
-                .trim(from: progress, to: 1)
+                .trim(from: show ? progress : 1, to: 1)
                 .stroke(
                     // 渐变颜色`LinearGradient`线性渐变
                     LinearGradient(gradient: Gradient(colors: [Color(color1), Color(color2)]), startPoint: .topTrailing, endPoint: .bottomLeading),
@@ -52,12 +54,15 @@ struct RingView: View {
             Text("\(Int(percent))%")
                 .font(.system(size: 14 * multiplier))
                 .fontWeight(.bold)
+                .onTapGesture {
+                    self.show.toggle()
+            }
         }
     }
 }
 
 struct RingView_Previews: PreviewProvider {
     static var previews: some View {
-        RingView()
+        RingView(show: .constant(true))
     }
 }

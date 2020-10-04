@@ -16,14 +16,16 @@ struct HomeView: View {
         VStack {
             HStack {
                 Text("Watching")
-                    .font(.system(size: 28, weight: .bold))
+//                    .font(.system(size: 28, weight: .bold)) // 系统默认的优先级高于自定义封装组件的优先级
+                    .modifier(CustomFontModifier(size: 28))
+                
                 Spacer()
 
                 AvatarView(showProfile: $showProfile)
-                
+
                 Button(action: { self.showUpdate.toggle() }) {
                     Image(systemName: "bell")
-                    // 默认情况下是黑色
+                        // 默认情况下是黑色
                         .renderingMode(.original)
                         .font(.system(size: 16, weight: .medium))
                         .frame(width: 36, height: 36)
@@ -31,7 +33,6 @@ struct HomeView: View {
                         .clipShape(Circle())
                         .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
-                    
                 }
                 .sheet(isPresented: $showUpdate) {
                     UpdateList()
@@ -43,6 +44,17 @@ struct HomeView: View {
             // HStack可以将元素对齐到顶部或底部或中间
             // HStack视图 都将水平分布
             // VStack可以对齐到左,中或右
+
+            // 环形进度条组件
+            ScrollView(.horizontal, showsIndicators: false) {
+                WatchRingsView()
+                    .padding(.horizontal, 30)
+                // 为了抵消阴影
+                    .padding(.bottom, 30)
+            }
+            
+            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(sectionData) { item in
@@ -95,7 +107,7 @@ struct SectionView: View {
         .background(section.color)
         .cornerRadius(30)
         // 设置自定义阴影
-            .shadow(color: section.color.opacity(0.3), radius: 20, x: 0, y: 20)
+        .shadow(color: section.color.opacity(0.3), radius: 20, x: 0, y: 20)
     }
 }
 
@@ -111,8 +123,43 @@ struct Section: Identifiable {
 
 let sectionData = [
     Section(title: "Prototype designs in SwiftUI", text: "18 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Card4")), color: Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))),
-     Section(title: "Build a SwiftUI App", text: "20 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Background1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
-      Section(title: "SwiftUI Advanced", text: "18 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Card6")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1))),
+    Section(title: "Build a SwiftUI App", text: "20 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Background1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
+    Section(title: "SwiftUI Advanced", text: "18 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Card6")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1))),
 ]
 
-
+struct WatchRingsView: View {
+    var body: some View {
+        HStack(spacing: 30.0) {
+            HStack(spacing: 12.0) {
+                RingView(color1: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), color2: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
+                VStack(alignment: .leading, spacing: 4.0) {
+                    Text("6 minutes left").bold().modifier(FontModifer(style: .subheadline))
+                    Text("Watching 10 mins today").modifier(FontModifer(style: .caption))
+                }
+                .modifier(FontModifer())
+            }
+            .padding(8)
+            .background(Color.white)
+            .cornerRadius(20)
+            .modifier(ShadowModifer())
+            
+            HStack(spacing: 12.0) {
+                RingView(color1: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), color2: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), width: 32, height: 32, percent: 54, show: .constant(true))
+            }
+            .padding(8)
+            .background(Color.white)
+            .cornerRadius(20)
+            .modifier(ShadowModifer())
+            
+            HStack(spacing: 12.0) {
+                RingView(color1: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), width: 32, height: 32, percent: 32, show: .constant(true))
+            }
+            .padding(8)
+            .background(Color.white)
+            .cornerRadius(20)
+            .modifier(ShadowModifer())
+            
+            
+        }
+    }
+}
