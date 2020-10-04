@@ -13,6 +13,8 @@
 		C3494F8F2527A1DA00E57721 /* UpdateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3494F8E2527A1DA00E57721 /* UpdateList.swift */; };
 		C3494F912527AAB700E57721 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3494F902527AAB700E57721 /* UpdateDetail.swift */; };
 		C350ACE32528CCAA00C603CD /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350ACE22528CCAA00C603CD /* UpdateStore.swift */; };
+		C350ACE52528DB6200C603CD /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350ACE42528DB6200C603CD /* TabBar.swift */; };
+		C3655CBD252A1630002FDA9B /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3655CBC252A1630002FDA9B /* RingView.swift */; };
 		C38B2B8D2524F7DC00A8C30D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B2B8C2524F7DC00A8C30D /* AppDelegate.swift */; };
 		C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B2B8E2524F7DC00A8C30D /* SceneDelegate.swift */; };
 		C38B2B912524F7DC00A8C30D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B2B902524F7DC00A8C30D /* ContentView.swift */; };
@@ -28,6 +30,8 @@
 		C3494F8E2527A1DA00E57721 /* UpdateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateList.swift; sourceTree = "<group>"; };
 		C3494F902527AAB700E57721 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
 		C350ACE22528CCAA00C603CD /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
+		C350ACE42528DB6200C603CD /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		C3655CBC252A1630002FDA9B /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		C38B2B892524F7DC00A8C30D /* Sample-DesignCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-DesignCode.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38B2B8C2524F7DC00A8C30D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C38B2B8E2524F7DC00A8C30D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,10 +75,12 @@
 				C38B2B8C2524F7DC00A8C30D /* AppDelegate.swift */,
 				C38B2B8E2524F7DC00A8C30D /* SceneDelegate.swift */,
 				C38B2B902524F7DC00A8C30D /* ContentView.swift */,
+				C3655CBC252A1630002FDA9B /* RingView.swift */,
 				C3494F8A2527790F00E57721 /* Home.swift */,
 				C3494F8E2527A1DA00E57721 /* UpdateList.swift */,
 				C3494F902527AAB700E57721 /* UpdateDetail.swift */,
 				C350ACE22528CCAA00C603CD /* UpdateStore.swift */,
+				C350ACE42528DB6200C603CD /* TabBar.swift */,
 				C3494F8C252787FA00E57721 /* HomeView.swift */,
 				C343D3B0252650ED00AA4A17 /* MenuView.swift */,
 				C38B2B922524F7E000A8C30D /* Assets.xcassets */,
@@ -120,7 +126,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "夏能啟";
 				TargetAttributes = {
 					C38B2B882524F7DC00A8C30D = {
@@ -169,10 +175,12 @@
 				C3494F8F2527A1DA00E57721 /* UpdateList.swift in Sources */,
 				C343D3B1252650EE00AA4A17 /* MenuView.swift in Sources */,
 				C3494F912527AAB700E57721 /* UpdateDetail.swift in Sources */,
+				C3655CBD252A1630002FDA9B /* RingView.swift in Sources */,
 				C3494F8B2527790F00E57721 /* Home.swift in Sources */,
 				C3494F8D252787FA00E57721 /* HomeView.swift in Sources */,
 				C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */,
 				C38B2B912524F7DC00A8C30D /* ContentView.swift in Sources */,
+				C350ACE52528DB6200C603CD /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +224,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -276,6 +285,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -308,16 +318,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-DesignCode/Preview Content\"";
+				DEVELOPMENT_TEAM = ZD8RCDB2Y6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Sample-DesignCode/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.xianengqi.Sample-DesignCode";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Sample-DesignCode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,16 +341,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-DesignCode/Preview Content\"";
+				DEVELOPMENT_TEAM = ZD8RCDB2Y6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Sample-DesignCode/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.xianengqi.Sample-DesignCode";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Sample-DesignCode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
