@@ -38,6 +38,9 @@
 		C3494F912527AAB700E57721 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3494F902527AAB700E57721 /* UpdateDetail.swift */; };
 		C350ACE32528CCAA00C603CD /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350ACE22528CCAA00C603CD /* UpdateStore.swift */; };
 		C350ACE52528DB6200C603CD /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350ACE42528DB6200C603CD /* TabBar.swift */; };
+		C364C6C1252CC58500BB4060 /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C6C0252CC58400BB4060 /* CourseDetail.swift */; };
+		C364C6C3252CCFDE00BB4060 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C6C2252CCFDE00BB4060 /* Data.swift */; };
+		C364C6C5252CD3AE00BB4060 /* DataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C6C4252CD3AE00BB4060 /* DataList.swift */; };
 		C3655CBD252A1630002FDA9B /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3655CBC252A1630002FDA9B /* RingView.swift */; };
 		C38B2B8D2524F7DC00A8C30D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B2B8C2524F7DC00A8C30D /* AppDelegate.swift */; };
 		C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B2B8E2524F7DC00A8C30D /* SceneDelegate.swift */; };
@@ -79,6 +82,9 @@
 		C3494F902527AAB700E57721 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
 		C350ACE22528CCAA00C603CD /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
 		C350ACE42528DB6200C603CD /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		C364C6C0252CC58400BB4060 /* CourseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
+		C364C6C2252CCFDE00BB4060 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		C364C6C4252CD3AE00BB4060 /* DataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataList.swift; sourceTree = "<group>"; };
 		C3655CBC252A1630002FDA9B /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		C38B2B892524F7DC00A8C30D /* Sample-DesignCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-DesignCode.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38B2B8C2524F7DC00A8C30D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 				C305099B252A310100803F94 /* Modifiers.swift */,
 				C3494F8A2527790F00E57721 /* Home.swift */,
 				C30509CB252A4CC200803F94 /* CourseList.swift */,
+				C364C6C0252CC58400BB4060 /* CourseDetail.swift */,
+				C364C6C2252CCFDE00BB4060 /* Data.swift */,
+				C364C6C4252CD3AE00BB4060 /* DataList.swift */,
 				C3494F8E2527A1DA00E57721 /* UpdateList.swift */,
 				C3494F902527AAB700E57721 /* UpdateDetail.swift */,
 				C350ACE22528CCAA00C603CD /* UpdateStore.swift */,
@@ -281,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C38B2B8D2524F7DC00A8C30D /* AppDelegate.swift in Sources */,
+				C364C6C3252CCFDE00BB4060 /* Data.swift in Sources */,
 				C350ACE32528CCAA00C603CD /* UpdateStore.swift in Sources */,
 				C3494F8F2527A1DA00E57721 /* UpdateList.swift in Sources */,
 				C343D3B1252650EE00AA4A17 /* MenuView.swift in Sources */,
@@ -291,8 +301,10 @@
 				C3494F8D252787FA00E57721 /* HomeView.swift in Sources */,
 				C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */,
 				C38B2B912524F7DC00A8C30D /* ContentView.swift in Sources */,
+				C364C6C1252CC58500BB4060 /* CourseDetail.swift in Sources */,
 				C350ACE52528DB6200C603CD /* TabBar.swift in Sources */,
 				C30509CC252A4CC200803F94 /* CourseList.swift in Sources */,
+				C364C6C5252CD3AE00BB4060 /* DataList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

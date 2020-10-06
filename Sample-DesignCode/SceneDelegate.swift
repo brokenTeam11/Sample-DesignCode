@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let contentView = ContentView()
         // 使用TabBar()作为初始屏幕
         let contentView = TabBar()
+//        let contentView = DataList()
 
 
         // Use a UIHostingController as window root view controller.

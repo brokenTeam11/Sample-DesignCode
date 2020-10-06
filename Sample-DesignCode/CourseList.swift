@@ -167,6 +167,12 @@ struct CourseView: View {
                     self.activeIndex = -1
                 }
             }
+            
+            if show {
+//                CourseDetail(course: course, show: $show, active: $active, activeIndex: $activeIndex)
+//                    .background(Color.white)
+//                    .animation(nil)
+            }
         }
         .frame(height: show ? screen.height : 280)
         .scaleEffect(1 - self.activeView.height / 1000)
@@ -182,7 +188,7 @@ struct CourseView: View {
                     // 当if语句多了的时候不方便阅读，可以用guard来替换if语句,上面的是if语句
                     guard value.translation.height < 300 else { return }
                     guard value.translation.height > 0 else { return }
-                    self.activeView = value.translation
+//                    self.activeView = value.translation
                 }
                 // 重置
                 .onEnded { _ in
