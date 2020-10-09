@@ -190,7 +190,7 @@ struct BottomCardView: View {
             HStack(spacing: 20.0) {
                 // `Animation.easeInOut.delay(0.3)`动画的延时
                 RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 88, height: 88, percent: 78, show: $show)
-                    .animation(Animation.easeInOut.delay(0.3))
+//                    .animation(Animation.easeInOut.delay(0.3))
                 
                 VStack(alignment: .leading, spacing: 8.0) {
                     Text("Swift UI").fontWeight(.bold)
@@ -210,7 +210,8 @@ struct BottomCardView: View {
         .padding(.top, 8)
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity)
-        .background(Color.white)
+            // 使用自定义组件，让背景变模糊
+            .background(BlurView(style: .systemThinMaterial)) // `systemThickMaterial`适配黑暗模式
         .cornerRadius(30)
         .shadow(radius: 20)
     }

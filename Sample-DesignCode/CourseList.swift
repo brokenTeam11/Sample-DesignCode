@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CourseList: View {
     @ObservedObject var store = CourseStore()
@@ -120,7 +121,8 @@ struct CourseView: View {
                     }
                 }
                 Spacer()
-                Image(uiImage: course.image)
+                // WebImage是引用的第三方库
+                WebImage(url: course.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)
@@ -211,14 +213,14 @@ struct Course: Identifiable {
     var id = UUID()
     var title: String
     var subtitle: String
-    var image: UIImage
+    var image: URL
     var logo: UIImage
     var color: UIColor
     var show: Bool
 }
 
 var courseData = [
-    Course(title: "Prototype designs in SwiftUI", subtitle: "18 Sections", image: #imageLiteral(resourceName: "Card1"), logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), show: false),
-    Course(title: "Build a SwiftUI App", subtitle: "22 Sections", image: #imageLiteral(resourceName: "Card3"), logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), show: false),
-    Course(title: "SwiftUI Advanced", subtitle: "30 Sections", image: #imageLiteral(resourceName: "Background1"), logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), show: false),
+    Course(title: "Prototype designs in SwiftUI", subtitle: "18 Sections", image: URL(string: "https://user-images.githubusercontent.com/30774189/95600087-86e44600-0a84-11eb-84af-0a12910ac15c.png")!, logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), show: false),
+    Course(title: "Build a SwiftUI App", subtitle: "22 Sections", image: URL(string: "https://user-images.githubusercontent.com/30774189/95600715-20abf300-0a85-11eb-9cbc-d7ae685f376f.png")!, logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), show: false),
+    Course(title: "SwiftUI Advanced", subtitle: "30 Sections", image: URL(string: "https://user-images.githubusercontent.com/30774189/95600733-23a6e380-0a85-11eb-9c3c-8286401ca3b3.png")!, logo: #imageLiteral(resourceName: "Logo1"), color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), show: false),
 ]
