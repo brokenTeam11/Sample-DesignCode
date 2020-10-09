@@ -15,7 +15,7 @@ struct Home: View {
 
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
+            Color("background2")
                 // 根视图的安全区域颜色设置为全部`.edgesIgnoringSafeArea(.all)`
                 .edgesIgnoringSafeArea(.all)
 
@@ -23,12 +23,12 @@ struct Home: View {
                 .padding(.top, 44)
                 .background(
                     VStack {
-                        LinearGradient(gradient: Gradient(colors: [Color("background2"), Color.white]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [Color("background2"), Color("background1")]), startPoint: .top, endPoint: .bottom)
                             .frame(height: 200)
                         
                         Spacer()
                     }
-                    .background(Color.white)
+                    .background(Color("background1"))
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
@@ -63,7 +63,7 @@ struct Home: View {
             if showContent {
                 // 在ZHack里面的任何元素将会彼此重叠
                 // 设置颜色，忽略安全区
-                Color.white.edgesIgnoringSafeArea(.all)
+                BlurView(style: .systemMaterial).edgesIgnoringSafeArea(.all)
                 ContentView()
 
                 VStack {
@@ -90,9 +90,12 @@ struct Home: View {
     }
 }
 
+// 在Home这里设置暗黑模式
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home().environment(\.colorScheme, .dark)
+            // 对于手机用户调整字体大小时。这个设置能自动放大字体大小到合适。
+            .environment(\.sizeCategory, .extraLarge)
     }
 }
 
