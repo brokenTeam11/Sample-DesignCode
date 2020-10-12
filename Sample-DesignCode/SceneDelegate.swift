@@ -23,9 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 这是我隐藏的
 //        let contentView = ContentView()
         // 使用TabBar()作为初始屏幕
-        let contentView = TabBar()
+//        let contentView = TabBar()
 //        let contentView = DataList()
 //        let contentView = Buttons()
+        let contentView = LoginView()
 
 
         // Use a UIHostingController as window root view controller.
