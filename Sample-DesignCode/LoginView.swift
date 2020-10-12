@@ -14,6 +14,7 @@ struct LoginView: View {
     @State var isFocused = false
     @State var showAlert = false
     @State var alertMessage = "请输入用户名和密码"
+    @State var isLoading = false
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -90,9 +91,14 @@ struct LoginView: View {
                     Spacer()
                     
                     Button(action: {
-                        self.showAlert = true
                         self.hideKeyboard()
                         self.isFocused = false
+                        self.isLoading = true
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.isLoading = false
+                            self.showAlert = true
+                        }
                     }) {
                         Text("Log in").foregroundColor(.black)
                     }
@@ -113,6 +119,10 @@ struct LoginView: View {
             .onTapGesture { // 添加手势
                 self.isFocused = false
                 self.hideKeyboard()
+            }
+            // 添加loading动画
+            if isLoading {
+                LoadingView()
             }
         }
     }
