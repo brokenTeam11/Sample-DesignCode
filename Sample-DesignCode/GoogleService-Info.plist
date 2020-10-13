@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>186237426500-ge8fhjm088otfhren08537k643p5vjrg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.186237426500-ge8fhjm088otfhren08537k643p5vjrg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDFN-uVuge7x80AIexzCUULEdxS5VzAfSs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>186237426500</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Sample-DesignCode</string>
+	<key>PROJECT_ID</key>
+	<string>designcode-swiftui-fc80b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>designcode-swiftui-fc80b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:186237426500:ios:4f63fed053bb58017c1511</string>
+	<key>DATABASE_URL</key>
+	<string>https://designcode-swiftui-fc80b.firebaseio.com</string>
+</dict>
+</plist>

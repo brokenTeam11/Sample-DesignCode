@@ -1,0 +1,6 @@
+framework module Pods_Sample_DesignCode {
+  umbrella header "Pods-Sample-DesignCode-umbrella.h"
+
+  export *
+  module * { export * }
+}
