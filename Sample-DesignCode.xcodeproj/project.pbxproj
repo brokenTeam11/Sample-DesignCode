@@ -55,6 +55,7 @@
 		C38B2B932524F7E000A8C30D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38B2B922524F7E000A8C30D /* Assets.xcassets */; };
 		C38B2B962524F7E000A8C30D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38B2B952524F7E000A8C30D /* Preview Assets.xcassets */; };
 		C38B2B992524F7E000A8C30D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38B2B972524F7E000A8C30D /* LaunchScreen.storyboard */; };
+		C39EEA8F253603820044197E /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39EEA8E253603820044197E /* SuccessView.swift */; };
 		C3AA6F55252CEF4B00FB7D7F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AA6F54252CEF4B00FB7D7F /* DataStore.swift */; };
 		C3BA471E2534DBDF0080ECD8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C3BA471D2534DBDF0080ECD8 /* Lottie */; };
 		C3BA47222534DD5E0080ECD8 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA47212534DD5E0080ECD8 /* LottieView.swift */; };
@@ -113,6 +114,7 @@
 		C38B2B952524F7E000A8C30D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C38B2B982524F7E000A8C30D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C38B2B9A2524F7E000A8C30D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C39EEA8E253603820044197E /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		C3AA6F54252CEF4B00FB7D7F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		C3BA47212534DD5E0080ECD8 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C3BA47252534E15E0080ECD8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				C3494F8A2527790F00E57721 /* Home.swift */,
 				C3494F8C252787FA00E57721 /* HomeView.swift */,
 				C3503F6125336EF200237906 /* LoginView.swift */,
+				C39EEA8E253603820044197E /* SuccessView.swift */,
 				C30509CB252A4CC200803F94 /* CourseList.swift */,
 				C364C6C0252CC58400BB4060 /* CourseDetail.swift */,
 				C34ECDB6252E1656001AD1FD /* CourseStore.swift */,
@@ -362,6 +365,7 @@
 				C38B2B8F2524F7DC00A8C30D /* SceneDelegate.swift in Sources */,
 				C38B2B912524F7DC00A8C30D /* ContentView.swift in Sources */,
 				C364C6C1252CC58500BB4060 /* CourseDetail.swift in Sources */,
+				C39EEA8F253603820044197E /* SuccessView.swift in Sources */,
 				C3503F6225336EF200237906 /* LoginView.swift in Sources */,
 				C354EA0A2532008700E0A3BC /* Buttons.swift in Sources */,
 				C350ACE52528DB6200C603CD /* TabBar.swift in Sources */,
