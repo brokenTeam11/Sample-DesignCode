@@ -12,6 +12,7 @@ struct Home: View {
     @State var showProfile = false
     @State var viewState = CGSize.zero
     @State var showContent = false
+    @EnvironmentObject var user: UserStore
 
     var body: some View {
         ZStack {
@@ -59,6 +60,31 @@ struct Home: View {
                     }
                 )
 
+            //
+            if user.showLogin {
+                ZStack {
+                    LoginView()
+                    
+                    VStack {
+                        HStack {
+                            Spacer()
+
+                            Image(systemName: "xmark")
+                                .frame(width: 36, height: 36)
+                                // 前景色
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .clipShape(Circle())
+                        }
+                        Spacer()
+                    }
+                    .padding()
+                    .onTapGesture {
+                        self.user.showLogin = false
+                    }
+                }
+            }
+            
             // 使用if语句，提高view性能
             if showContent {
                 // 在ZHack里面的任何元素将会彼此重叠
@@ -93,23 +119,42 @@ struct Home: View {
 // 在Home这里设置暗黑模式
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home().environment(\.colorScheme, .dark)
+        Home()
+//            .environment(\.colorScheme, .dark)
             // 对于手机用户调整字体大小时。这个设置能自动放大字体大小到合适。
-            .environment(\.sizeCategory, .extraLarge)
+//            .environment(\.sizeCategory, .extraLarge)
+            .environmentObject(UserStore())
     }
 }
 
 struct AvatarView: View {
     // 共享状态
     @Binding var showProfile: Bool
+    // 用户是否登录的图标显示
+    @EnvironmentObject var user: UserStore
 
     var body: some View {
-        Button(action: { self.showProfile.toggle() }) {
-            Image("Avatar")
-                .renderingMode(.original)
-                .resizable()
-                .frame(width: 36, height: 36)
-                .clipShape(Circle())
+        VStack {
+            if user.isLogged {
+                Button(action: { self.showProfile.toggle() }) {
+                Image("Avatar")
+                    .renderingMode(.original)
+                    .resizable()
+                    .frame(width: 36, height: 36)
+                    .clipShape(Circle())
+                }
+            } else {
+                Button(action: { self.user.showLogin.toggle() }) {
+                Image(systemName: "person")
+                    .foregroundColor(.primary)
+                    .font(.system(size: 16, weight: .medium))
+                    .frame(width: 36, height: 36)
+                    .background(Color("background3"))
+                    .clipShape(Circle())
+                    .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                }
+            }
         }
     }
 }

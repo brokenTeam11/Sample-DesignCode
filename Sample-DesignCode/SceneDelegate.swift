@@ -22,17 +22,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         // 这是我隐藏的
 //        let contentView = ContentView()
+        let contentView = Home()
         // 使用TabBar()作为初始屏幕
 //        let contentView = TabBar()
 //        let contentView = DataList()
 //        let contentView = Buttons()
-        let contentView = LoginView()
+//        let contentView = LoginView()
 
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(UserStore())) // `UserStore()是自定义组件`存储用户的登录状态
             self.window = window
             window.makeKeyAndVisible()
         }
