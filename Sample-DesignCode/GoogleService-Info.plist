@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>186237426500-ge8fhjm088otfhren08537k643p5vjrg.apps.googleusercontent.com</string>
+	<string>773777200859-qm867nact73tdcem84l322cs7sq8jim9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.186237426500-ge8fhjm088otfhren08537k643p5vjrg</string>
+	<string>com.googleusercontent.apps.773777200859-qm867nact73tdcem84l322cs7sq8jim9</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDFN-uVuge7x80AIexzCUULEdxS5VzAfSs</string>
+	<string>AIzaSyBUjsMeb7R9Y9BdP1eBm6lNCAtomKMOnTQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>186237426500</string>
+	<string>773777200859</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Sample-DesignCode</string>
 	<key>PROJECT_ID</key>
-	<string>designcode-swiftui-fc80b</string>
+	<string>design-code-635e1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>designcode-swiftui-fc80b.appspot.com</string>
+	<string>design-code-635e1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:186237426500:ios:4f63fed053bb58017c1511</string>
+	<string>1:773777200859:ios:2245e0addc1e9ae20f9efe</string>
 	<key>DATABASE_URL</key>
-	<string>https://designcode-swiftui-fc80b.firebaseio.com</string>
+	<string>https://design-code-635e1.firebaseio.com</string>
 </dict>
 </plist>
