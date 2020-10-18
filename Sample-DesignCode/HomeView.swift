@@ -14,82 +14,83 @@ struct HomeView: View {
     @Binding var showContent: Bool
 
     var body: some View {
-        ScrollView {
-            VStack {
-                HStack {
-                    Text("Watching")
-    //                    .font(.system(size: 28, weight: .bold)) // 系统默认的优先级高于自定义封装组件的优先级
-                        .modifier(CustomFontModifier(size: 28))
-                    
-                    Spacer()
+        // `GeometryReader` 适配iPad
+        GeometryReader { bounds in
+            ScrollView {
+                VStack {
+                    HStack {
+                        Text("Watching")
+                            //                    .font(.system(size: 28, weight: .bold)) // 系统默认的优先级高于自定义封装组件的优先级
+                            .modifier(CustomFontModifier(size: 28))
 
-                    AvatarView(showProfile: $showProfile)
+                        Spacer()
 
-                    Button(action: { self.showUpdate.toggle() }) {
-                        Image(systemName: "bell")
-                            // 默认情况下是黑色
-//                            .renderingMode(.original)
-                            .foregroundColor(.primary)
-                            .font(.system(size: 16, weight: .medium))
-                            .frame(width: 36, height: 36)
-                            .background(Color("background3"))
-                            .clipShape(Circle())
-                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
-                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
-                    }
-                    .sheet(isPresented: $showUpdate) {
-                        UpdateList()
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.leading, 14)
-                .padding(.top, 30)
-                // HStack可以将元素对齐到顶部或底部或中间
-                // HStack视图 都将水平分布
-                // VStack可以对齐到左,中或右
+                        AvatarView(showProfile: self.$showProfile)
 
-                // 环形进度条组件
-                ScrollView(.horizontal, showsIndicators: false) {
-                    WatchRingsView()
-                        .padding(.horizontal, 30)
-                    // 为了抵消阴影
-                        .padding(.bottom, 30)
-                        .onTapGesture {
-                            self.showContent = true
-                    }
-                }
-                
-                
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        ForEach(sectionData) { item in
-                            GeometryReader { geometry in
-                                SectionView(section: item)
-                                    .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 30) / -20), axis: (x: 0, y: 10.0, z: 0))
-                            }
-                            .frame(width: 275, height: 275)
+                        Button(action: { self.showUpdate.toggle() }) {
+                            Image(systemName: "bell")
+                                // 默认情况下是黑色
+                                //                            .renderingMode(.original)
+                                .foregroundColor(.primary)
+                                .font(.system(size: 16, weight: .medium))
+                                .frame(width: 36, height: 36)
+                                .background(Color("background3"))
+                                .clipShape(Circle())
+                                .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                        }
+                        .sheet(isPresented: self.$showUpdate) {
+                            UpdateList()
                         }
                     }
-                    .padding(30)
-                    .padding(.bottom, 30)
-                }
-                .offset(y: -30)
-                
-                HStack {
-                    Text("Courses")
-                        .font(.title).bold()
+                    .padding(.horizontal, 20)
+                    .padding(.leading, 14)
+                    .padding(.top, 30)
+                    // HStack可以将元素对齐到顶部或底部或中间
+                    // HStack视图 都将水平分布
+                    // VStack可以对齐到左,中或右
+
+                    // 环形进度条组件
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        WatchRingsView()
+                            .padding(.horizontal, 30)
+                            // 为了抵消阴影
+                            .padding(.bottom, 30)
+                            .onTapGesture {
+                                self.showContent = true
+                            }
+                    }
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            ForEach(sectionData) { item in
+                                GeometryReader { geometry in
+                                    SectionView(section: item)
+                                        .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 30) / -20), axis: (x: 0, y: 10.0, z: 0))
+                                }
+                                .frame(width: 275, height: 275)
+                            }
+                        }
+                        .padding(30)
+                        .padding(.bottom, 30)
+                    }
+                    .offset(y: -30)
+
+                    HStack {
+                        Text("Courses")
+                            .font(.title).bold()
+                        Spacer()
+                    }
+                    .padding(.leading, 30)
+                    .offset(y: -60)
+
+                    SectionView(section: sectionData[2], width: bounds.size.width - 60, height: 275)
+                        .offset(y: -60)
+
                     Spacer()
                 }
-                .padding(.leading, 30)
-                .offset(y: -60)
-                
-                SectionView(section: sectionData[2], width: screen.width - 60, height: 275)
-                .offset(y: -60)
-
-                Spacer()
+                .frame(width: bounds.size.width)
             }
-            .frame(width: screen.width)
         }
     }
 }
@@ -97,6 +98,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(showProfile: .constant(false), showContent: .constant(false))
+            // 适配iPad
+            .environmentObject(UserStore())
     }
 }
 
@@ -164,7 +167,7 @@ struct WatchRingsView: View {
             .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifer())
-            
+
             HStack(spacing: 12.0) {
                 RingView(color1: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), color2: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), width: 32, height: 32, percent: 54, show: .constant(true))
             }
@@ -172,7 +175,7 @@ struct WatchRingsView: View {
             .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifer())
-            
+
             HStack(spacing: 12.0) {
                 RingView(color1: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), width: 32, height: 32, percent: 32, show: .constant(true))
             }
@@ -180,8 +183,6 @@ struct WatchRingsView: View {
             .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifer())
-            
-            
         }
     }
 }
