@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct MenuView: View {
+    @EnvironmentObject var user: UserStore
+    // 设置关联登出点击事件
+    @Binding var showProfile: Bool
+    
     var body: some View {
         // 如果想设置间距，在HStack后面加上
         VStack {
@@ -33,6 +37,11 @@ struct MenuView: View {
                 MenuRow(title: "Account", icon: "gear")
                 MenuRow(title: "Billing", icon: "creditcard")
                 MenuRow(title: "Sign out", icon: "person.crop.circle")
+                    .onTapGesture {
+                        UserDefaults.standard.set(false, forKey: "isLogged")
+                        self.user.isLogged = false
+                        self.showProfile = false
+                    }
             }
             .frame(maxWidth: .infinity)
             .frame(height: 300)
@@ -59,7 +68,7 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(showProfile: .constant(true)).environmentObject(UserStore())
     }
 }
 

@@ -10,6 +10,11 @@ import SwiftUI
 import Combine
 
 class UserStore: ObservableObject {
-    @Published var isLogged = false
+    // 存储用户的登录态
+    @Published var isLogged: Bool = UserDefaults.standard.bool(forKey: "isLogged") {
+        didSet {
+            UserDefaults.standard.set(self.isLogged, forKey: "isLogged")
+        }
+    }
     @Published var showLogin = false
 }
