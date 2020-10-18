@@ -14,51 +14,72 @@ struct CourseList: View {
     @State var active = false
     @State var activeIndex = -1
     @State var activeView = CGSize.zero
+    // 设定环境模式
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
     var body: some View {
-        ZStack {
-            Color.black.opacity(Double(self.activeView.height/500))
-                .animation(.linear)
-                .edgesIgnoringSafeArea(.all)
-                
+        GeometryReader { bounds in
+            ZStack {
+                Color.black.opacity(Double(self.activeView.height/500))
+                    .animation(.linear)
+                    .edgesIgnoringSafeArea(.all)
+                    
 
-            ScrollView {
-                VStack(spacing: 30) {
-                    Text("Courese")
-                        .font(.largeTitle).bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 30)
-                        .padding(.top, 30)
-                        .blur(radius: active ? 20 : 0)
-                    // `id: \.self`提供索引
-                    ForEach(store.courses.indices, id: \.self) { index in
-                        GeometryReader { geometry in
-                            CourseView(
-                                show: self.$store.courses[index].show,
-                                course: self.store.courses[index],
-                                active: self.$active,
-                                index: index,
-                                activeIndex: self.$activeIndex,
-                                activeView: self.$activeView
-                            )
-                                .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
-                            .opacity(self.activeIndex != index && self.active ? 0 : 1)
-                            .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)
-                            .offset(x: self.activeIndex != index && self.active ? screen.width : 0)
+                ScrollView {
+                    VStack(spacing: 30) {
+                        Text("Courese")
+                            .font(.largeTitle).bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 30)
+                            .padding(.top, 30)
+                            .blur(radius: self.active ? 20 : 0)
+                        // `id: \.self`提供索引
+                        ForEach(self.store.courses.indices, id: \.self) { index in
+                            GeometryReader { geometry in
+                                CourseView(
+                                    show: self.$store.courses[index].show,
+                                    course: self.store.courses[index],
+                                    active: self.$active,
+                                    index: index,
+                                    activeIndex: self.$activeIndex,
+                                    activeView: self.$activeView,
+                                    bounds: bounds
+                                )
+                                    .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+                                .opacity(self.activeIndex != index && self.active ? 0 : 1)
+                                .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)
+                                .offset(x: self.activeIndex != index && self.active ? bounds.size.width : 0)
+                            }
+                            .frame(height: self.horizontalSizeClass == .regular ? 80 : 280)
+                            .frame(maxWidth: self.store.courses[index].show ? 712 : getCardWidth(bounds: bounds))
+                            .zIndex(self.store.courses[index].show ? 1 : 0)
                         }
-                        .frame(height: 280)
-                        .frame(maxWidth: self.store.courses[index].show ? .infinity : screen.width - 60)
-                        .zIndex(self.store.courses[index].show ? 1 : 0)
                     }
+                    .frame(width: bounds.size.width)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
                 }
-                .frame(width: screen.width)
-                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                // 隐藏状态栏
+                .statusBar(hidden: self.active ? true : false)
+                .animation(.linear)
             }
-            // 隐藏状态栏
-            .statusBar(hidden: active ? true : false)
-            .animation(.linear)
         }
     }
+}
+
+// 适配屏幕大小ipad
+func getCardWidth(bounds: GeometryProxy) -> CGFloat {
+    if bounds.size.width > 712 {
+        return 712
+    }
+    return bounds.size.width - 60
+}
+// 适配屏幕大小ipad
+func getCardCornerRadius(bounds: GeometryProxy) -> CGFloat {
+    if bounds.size.width < 712 && bounds.safeAreaInsets.top < 44 {
+        return 0
+    }
+    
+    return 30
 }
 
 struct CourseList_Previews: PreviewProvider {
@@ -74,6 +95,7 @@ struct CourseView: View {
     var index: Int
     @Binding var activeIndex: Int
     @Binding var activeView: CGSize
+    var bounds: GeometryProxy
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -91,7 +113,7 @@ struct CourseView: View {
             .offset(y: show ? 460 : 0)
             .background(Color("background2"))
             // 平滑角
-            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: show ? getCardCornerRadius(bounds: bounds) : 30, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             // 添加不透明度
             .opacity(show ? 1 : 0)
@@ -135,7 +157,7 @@ struct CourseView: View {
             .frame(maxWidth: show ? .infinity : screen.width - 60, maxHeight: show ? 460 : 280)
             .background(Color(course.color))
             // 平滑的圆角
-            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: show ? getCardCornerRadius(bounds: bounds) : 30, style: .continuous))
             .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 20)
 
             // 添加手势
@@ -178,7 +200,7 @@ struct CourseView: View {
 //                    .animation(nil)
             }
         }
-        .frame(height: show ? screen.height : 280)
+        .frame(height: show ? bounds.size.height + bounds.safeAreaInsets.top + bounds.safeAreaInsets.bottom : 280)
         .scaleEffect(1 - self.activeView.height / 1000)
         .rotation3DEffect(Angle(degrees: Double(self.activeView.height / 10)), axis: (x: 0, y: 10.0, z: 0))
         .hueRotation(Angle(degrees: Double(self.activeView.height)))
