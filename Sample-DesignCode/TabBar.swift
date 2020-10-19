@@ -11,28 +11,29 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
-            Home().tabItem{
+            Home().tabItem {
                 Image(systemName: "play.circle.fill")
                 Text("Home")
             }
-            CourseList().tabItem{
+            CourseList().tabItem {
                 Image(systemName: "rectangle.stack.fill")
                 Text("Courses")
             }
         }
         // 忽略掉安全区域
-            .edgesIgnoringSafeArea(.top)
+//            .edgesIgnoringSafeArea(.top)
     }
 }
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         // 不同型号的预览
-        TabBar().previewDevice("iPhone 8")
-//        Group {
-//
-//            TabBar().previewDevice("iPhone Xʀ")
-////            TabBar().previewDevice("iPhone 11 Pro Max")
-//        }
+//        TabBar().previewDevice("iPhone 11 Pro")
+        
+        Group {
+            TabBar().previewDevice("iPhone Xʀ")
+            .environmentObject(UserStore())
+        //            TabBar().previewDevice("iPhone 11 Pro Max")
+        }
     }
 }

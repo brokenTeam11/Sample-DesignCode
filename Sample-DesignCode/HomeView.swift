@@ -14,6 +14,13 @@ struct HomeView: View {
     @Binding var showContent: Bool
     @Binding var viewState: CGSize
 
+    @ObservedObject var store = CourseStore()
+    @State var active = false
+    @State var activeIndex = -1
+    @State var activeView = CGSize.zero
+    // 设定环境模式
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
     var body: some View {
         // `GeometryReader` 适配iPad
         GeometryReader { bounds in
@@ -47,6 +54,7 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                     .padding(.leading, 14)
                     .padding(.top, 30)
+                    .blur(radius: self.active ? 20 : 0)
                     // HStack可以将元素对齐到顶部或底部或中间
                     // HStack视图 都将水平分布
                     // VStack可以对齐到左,中或右
@@ -61,6 +69,7 @@ struct HomeView: View {
                                 self.showContent = true
                             }
                     }
+                    .blur(radius: self.active ? 20 : 0)
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
@@ -76,6 +85,7 @@ struct HomeView: View {
                         .padding(.bottom, 30)
                     }
                     .offset(y: -30)
+                    .blur(radius: self.active ? 20 : 0)
 
                     HStack {
                         Text("Courses")
@@ -84,9 +94,32 @@ struct HomeView: View {
                     }
                     .padding(.leading, 30)
                     .offset(y: -60)
+                    .blur(radius: self.active ? 20 : 0)
 
-                    SectionView(section: sectionData[2], width: bounds.size.width - 60, height: 275)
-                        .offset(y: -60)
+                    VStack(spacing: 30) {
+                        ForEach(self.store.courses.indices, id: \.self) { index in
+                            GeometryReader { geometry in
+                                CourseView(
+                                    show: self.$store.courses[index].show,
+                                    course: self.store.courses[index],
+                                    active: self.$active,
+                                    index: index,
+                                    activeIndex: self.$activeIndex,
+                                    activeView: self.$activeView,
+                                    bounds: bounds
+                                )
+                                .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+                                .opacity(self.activeIndex != index && self.active ? 0 : 1)
+                                .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)
+                                .offset(x: self.activeIndex != index && self.active ? bounds.size.width : 0)
+                            }
+                            .frame(height: self.horizontalSizeClass == .regular ? 80 : 280)
+                            .frame(maxWidth: self.store.courses[index].show ? 712 : getCardWidth(bounds: bounds))
+                            .zIndex(self.store.courses[index].show ? 1 : 0)
+                        }
+                    }
+                    .padding(.bottom, 30)
+                    .offset(y: -60)
 
                     Spacer()
                 }

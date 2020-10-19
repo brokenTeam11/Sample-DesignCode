@@ -22,13 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         // 这是我隐藏的
 //        let contentView = ContentView()
-//        let contentView = Home()
+        let contentView = Home()
         // 使用TabBar()作为初始屏幕
 //        let contentView = TabBar()
 //        let contentView = DataList()
 //        let contentView = Buttons()
 //        let contentView = LoginView()
-        let contentView = CourseList()
+//        let contentView = CourseList()
 
 
         // Use a UIHostingController as window root view controller.
