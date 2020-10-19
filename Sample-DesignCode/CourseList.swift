@@ -16,6 +16,7 @@ struct CourseList: View {
     @State var activeView = CGSize.zero
     // 设定环境模式
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State var isScrollable = false
 
     var body: some View {
         GeometryReader { bounds in
@@ -43,7 +44,8 @@ struct CourseList: View {
                                     index: index,
                                     activeIndex: self.$activeIndex,
                                     activeView: self.$activeView,
-                                    bounds: bounds
+                                    bounds: bounds,
+                                    isScrollable: self.$isScrollable
                                 )
                                     .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
                                 .opacity(self.activeIndex != index && self.active ? 0 : 1)
@@ -61,6 +63,7 @@ struct CourseList: View {
                 // 隐藏状态栏
                 .statusBar(hidden: self.active ? true : false)
                 .animation(.linear)
+                .disabled(self.active && !self.isScrollable ? true : false)
             }
         }
     }
@@ -96,6 +99,7 @@ struct CourseView: View {
     @Binding var activeIndex: Int
     @Binding var activeView: CGSize
     var bounds: GeometryProxy
+    @Binding var isScrollable: Bool
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -108,10 +112,11 @@ struct CourseView: View {
                 Text("This course is unlike any other. We care about design and want to make sure that you get better at it in the process. It was written for designers and developers who are passionate about collaborating and building real apps for iOS and macOS. While it's not one codebase for all apps, you learn once and can apply the techniques and controls to all platforms with incredible quality, consistency and performance. It's beginner-friendly, but it's also packed with design tricks and efficient workflows for building great user interfaces and interactions.")
                 Text(" controls to all platforms with incredible quality, consistency and performance. It's beginner-friendly, but it's also packed with design tricks and efficient workflows for building great user interfaces and interactions.Take your SwiftUI app to the App Store with advanced techniques like API data, packages and CMS.")
             }
+            .animation(nil)
             .padding(30)
             .frame(maxWidth: show ? .infinity : screen.width - 60, maxHeight: show ? .infinity : 280, alignment: .top)
             .offset(y: show ? 460 : 0)
-            .background(Color("background2"))
+            .background(Color("background1"))
             // 平滑角
             .clipShape(RoundedRectangle(cornerRadius: show ? getCardCornerRadius(bounds: bounds) : 30, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
@@ -140,6 +145,7 @@ struct CourseView: View {
                         .background(Color.black)
                         .clipShape(Circle())
                         .opacity(show ? 1 : 0)
+                        .offset(x: 2, y: -2)
                     }
                 }
                 Spacer()
@@ -178,6 +184,7 @@ struct CourseView: View {
                             self.show = false
                             self.active = false
                             self.activeIndex = -1
+                            self.isScrollable = false
                         }
                         self.activeView = .zero
                     }
@@ -192,14 +199,21 @@ struct CourseView: View {
                 } else {
                     self.activeIndex = -1
                 }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                    self.isScrollable = true
+                }
             }
             
-            if show {
-//                CourseDetail(course: course, show: $show, active: $active, activeIndex: $activeIndex)
-//                    .background(Color.white)
-//                    .animation(nil)
+            if isScrollable {
+                CourseDetail(course: course, show: $show, active: $active, activeIndex: $activeIndex, isScrollable: $isScrollable, bounds: bounds)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: show ? getCardWidth(bounds: bounds) : 30, style: .continuous))
+                    .animation(nil)
+                    .transition(.identity)
             }
         }
+        
         .frame(height: show ? bounds.size.height + bounds.safeAreaInsets.top + bounds.safeAreaInsets.bottom : 280)
         .scaleEffect(1 - self.activeView.height / 1000)
         .rotation3DEffect(Angle(degrees: Double(self.activeView.height / 10)), axis: (x: 0, y: 10.0, z: 0))
@@ -213,7 +227,7 @@ struct CourseView: View {
                     //                    }
                     // 当if语句多了的时候不方便阅读，可以用guard来替换if语句,上面的是if语句
                     guard value.translation.height < 300 else { return }
-                    guard value.translation.height > 0 else { return }
+                    guard value.translation.height > 50 else { return }
 //                    self.activeView = value.translation
                 }
                 // 重置
@@ -222,11 +236,13 @@ struct CourseView: View {
                         self.show = false
                         self.active = false
                         self.activeIndex = -1
+                        self.isScrollable = false
                     }
                     self.activeView = .zero
                 }
                 : nil
         )
+        .disabled(active && !isScrollable ? true : false)
         .edgesIgnoringSafeArea(.all)
     }
 }

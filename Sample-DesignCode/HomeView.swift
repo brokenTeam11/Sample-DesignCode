@@ -20,6 +20,7 @@ struct HomeView: View {
     @State var activeView = CGSize.zero
     // 设定环境模式
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State var isScrollable = false
 
     var body: some View {
         // `GeometryReader` 适配iPad
@@ -106,7 +107,8 @@ struct HomeView: View {
                                     index: index,
                                     activeIndex: self.$activeIndex,
                                     activeView: self.$activeView,
-                                    bounds: bounds
+                                    bounds: bounds,
+                                    isScrollable: self.$isScrollable
                                 )
                                 .offset(y: self.store.courses[index].show ? -geometry.frame(in: .global).minY : 0)
                                 .opacity(self.activeIndex != index && self.active ? 0 : 1)
@@ -129,6 +131,7 @@ struct HomeView: View {
                 .scaleEffect(self.showProfile ? 0.9 : 1)
                 .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
             }
+            .disable(self.active && !self.isScrollable ? true : false)
         }
     }
 }
