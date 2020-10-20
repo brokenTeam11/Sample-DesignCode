@@ -131,7 +131,8 @@ struct HomeView: View {
                 .scaleEffect(self.showProfile ? 0.9 : 1)
                 .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
             }
-            .disable(self.active && !self.isScrollable ? true : false)
+            .disabled(self.active && !self.isScrollable ? true : false)
+            
         }
     }
 }
